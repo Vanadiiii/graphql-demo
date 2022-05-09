@@ -12,7 +12,7 @@ import java.util.List;
 
 @DgsComponent
 @RequiredArgsConstructor
-public class ShowsDataFetcher {
+public class ShowDataFetcher {
     private final ShowService showService;
 
     @DgsQuery
