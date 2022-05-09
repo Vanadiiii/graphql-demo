@@ -1,4 +1,4 @@
-package me.imatveev.graphqldemo.configuration;
+package me.imatveev.graphqldemo.api;
 
 import com.netflix.graphql.dgs.DgsComponent;
 import com.netflix.graphql.dgs.DgsQuery;
@@ -20,5 +20,10 @@ public class ShowsDataFetcher {
         return Strings.isNullOrEmpty(titleFilter)
                 ? showService.findAll()
                 : showService.findByTitleFilter(titleFilter);
+    }
+
+    @DgsQuery
+    public Show show(@InputArgument String id) {
+        return showService.findById(id);
     }
 }

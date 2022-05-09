@@ -22,4 +22,10 @@ public class ShowServiceImpl implements ShowService {
     public List<Show> findAll() {
         return showRepository.findAll();
     }
+
+    @Override
+    public Show findById(String id) {
+        return showRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Ooops..."));
+    }
 }

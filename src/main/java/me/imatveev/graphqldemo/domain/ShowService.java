@@ -8,4 +8,6 @@ public interface ShowService {
     List<Show> findByTitleFilter(String titleFilter);
 
     List<Show> findAll();
+
+    Show findById(String id);
 }
