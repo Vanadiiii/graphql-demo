@@ -1,0 +1,32 @@
+schema {
+    query: EntryPoint
+}
+
+type EntryPoint {
+    cart(id: String!): Cart
+    carts: [Cart]
+}
+
+type Cart {
+    id: String!
+    items: [Item]
+    subTotal: BigDecimal
+}
+
+type Item {
+    quantity: Int!
+    product: Product!
+    productId: String! @deprecated(reason: "don't use it!")
+    total: BigDecimal!
+}
+
+type Product {
+    id: String!
+    title: String!
+    price: BigDecimal!
+    description: String
+    sku: String!
+    images: [String!]!
+}
+
+scalar BigDecimal
