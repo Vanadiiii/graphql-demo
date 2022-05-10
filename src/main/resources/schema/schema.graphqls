@@ -26,7 +26,7 @@ type Product {
     price: BigDecimal!
     description: String
     sku: String!
-    images: [String!]!
+    images(limit: Int = 0): [String!]!
 }
 
 scalar BigDecimal

@@ -1,6 +1,7 @@
 package me.imatveev.graphqldemo.api;
 
-import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import io.leangen.graphql.annotations.GraphQLArgument;
+import io.leangen.graphql.annotations.GraphQLQuery;
 import lombok.RequiredArgsConstructor;
 import me.imatveev.graphqldemo.domain.CartService;
 import me.imatveev.graphqldemo.domain.entity.Cart;
@@ -10,13 +11,15 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-public class CartResolver implements GraphQLQueryResolver {
+public class CartGraph {
     private final CartService cartService;
 
-    public Cart cart(String id) {
+    @GraphQLQuery(name = "cart")
+    public Cart cart(@GraphQLArgument(name = "id") String id) {
         return cartService.findById(id);
     }
 
+    @GraphQLQuery(name = "carts")
     public List<Cart> carts() {
         return cartService.findAll();
     }
